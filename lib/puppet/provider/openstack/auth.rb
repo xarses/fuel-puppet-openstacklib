@@ -45,7 +45,7 @@ module Puppet::Provider::Openstack::Auth
   def set_credentials(creds, env)
     env.each do |key, val|
       var = key.sub(/^OS_/,'').downcase
-      creds.set(var, val)
+      creds.set(var, val) unless var == 'identity_api_version'
     end
   end
 end
